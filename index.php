@@ -42,6 +42,43 @@ $pratos = mysqli_query($conexao, "SELECT * FROM pratos");
             <input type="text" name="descricao">
             <button type="submit">Cadastrar</button>
         </form>
+        <div>
+            <h2>Usuarios cadastrados:</h2>
+            <ul>
+                <?php while ($usuario = mysqli_fetch_assoc($usuarios)) { ?>
+                    <li>
+                        <strong>Nome:</strong> <?php echo $usuario['nome']; ?> |
+                        <strong>Email:</strong> <?php echo $usuario['email']; ?>
+                    </li>
+                <?php } ?>
+
+        </div>
+            <div>
+                <h2>Pratos cadastrados:</h2>
+                <ul>
+                    <?php while ($prato = mysqli_fetch_assoc($pratos)) { ?>
+                        <li>
+                            <strong>Nome:</strong> <?php echo $prato['nome']; ?> |
+                            <strong>Preço:</strong> <?php echo $prato['preco']; ?> |
+                            <strong>Categoria:</strong> <?php echo $prato['categoria']; ?> |
+                            <strong>Descrição:</strong> <?php echo $prato['descricao']; ?>
+                        </li>
+                    <?php } ?>
+                </ul>
+            </div>
+            <h2>Cadastre os pedidos!</h2>
+        <form action="public/pedidos/cadastrar_pedido.php" method="POST">
+            <label for="nome_cliente">Nome do cliente:</label>
+            <input type="text" name="nome_cliente">
+            <br>
+            <label for="prato_id">ID do prato:</label>
+            <input type="number" name="prato_id">
+            <br>
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" name="quantidade">
+            <br>
+            <button type="submit">Cadastrar</button>
+        </form>
     </main>
     
 </body>
